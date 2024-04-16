@@ -1,4 +1,6 @@
 #pragma once
+#include "SFML/Graphics.hpp"
+
 
 class GameManager 
 {
@@ -11,10 +13,8 @@ public:
 	//void
 private:
 	void GameLoop();
-
-
-
-
-
-
+	int screenWidth;
+	int screenHeight;
+	float dt;
+	sf::Clock startClock;
 };
