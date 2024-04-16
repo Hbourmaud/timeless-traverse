@@ -1,0 +1,8 @@
+{
+  "name": "timelesstraverse",
+  "description": "Timeless_Traverse",
+  "version-string": "0.1.0",
+  "dependencies": [
+    "sfml"
+  ]
+}
