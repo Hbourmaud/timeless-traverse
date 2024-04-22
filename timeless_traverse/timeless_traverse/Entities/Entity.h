@@ -1,11 +1,13 @@
 #pragma once
 
-class Entity
-{
-public:
-	Entity();
-	virtual ~Entity();
-	int id;
+#include "../GameObject.h"
 
-	bool operator ==(const Entity* secondEntity) const { return id == secondEntity->id; }
-};
+class Entity : public GameObject
+	{
+	public:
+		Entity();
+		virtual ~Entity();
+		int id;
+
+		bool operator ==(const Entity * secondEntity) const { return id == secondEntity->id; }
+	};

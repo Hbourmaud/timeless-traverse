@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 
-class EntityManager
+class EntityManager : GameObject
 {
 public:
 	EntityManager();
