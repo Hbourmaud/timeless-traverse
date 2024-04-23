@@ -1,4 +1,5 @@
 #include <SFML/System/Vector2.hpp>
+#include "../Math/Vector2D.h"
 
 #include "Component.h"
 
@@ -9,16 +10,16 @@ public:
 	~TransformComponent();
 
 	//getter
-	sf::Vector2f GetPosition() { return position; }
-	sf::Vector2f GetRotation() { return rotation; }
-	sf::Vector2f GetScale() { return scale; }
+	Vector2D::TVector2D<float>GetPosition() { return position; }
+	Vector2D::TVector2D<float> GetRotation() { return rotation; }
+	Vector2D::TVector2D<float> GetScale() { return scale; }
 	//setter
 	void SetPosition(float x, float y);
 	void SetRotation();
 	void SetScale(float x, float y);
 
 private:
-	sf::Vector2f position;
-	sf::Vector2f rotation;
-	sf::Vector2f scale;
+	Vector2D::TVector2D<float> position;
+	Vector2D::TVector2D<float> rotation;
+	Vector2D::TVector2D<float> scale;
 };

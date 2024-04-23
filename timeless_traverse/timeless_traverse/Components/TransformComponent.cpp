@@ -6,8 +6,8 @@ TransformComponent::~TransformComponent() = default;
 
 void TransformComponent::SetPosition(float x, float y)
 {
-	position.x = x;
-	position.y = y;
+	position.X = x; 
+	position.Y = y;
 };
 
 void TransformComponent::SetRotation()
@@ -17,6 +17,6 @@ void TransformComponent::SetRotation()
 
 void TransformComponent::SetScale(float x, float y)
 {
-	scale.x = x;
-	scale.y = y;
+	scale.X = x;
+	scale.Y = y;
 }
