@@ -1,11 +1,19 @@
 #include "RenderComponent.h"
 
-//Component::Component()
-//{
-//
-//}
-//
-//Component::~Component()
-//{
-//
-//}
+RenderComponent::RenderComponent()
+{
+
+}
+
+RenderComponent::~RenderComponent() = default;
+
+void RenderComponent::SetSprite(sf::Texture texture)
+{
+	if (!texture.loadFromFile("WonderBoy.png"))
+	{
+		// erreur...
+	}
+	texture.setSmooth(true);
+	entitySprite.setTexture(texture);
+}
+

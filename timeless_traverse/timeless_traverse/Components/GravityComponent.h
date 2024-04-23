@@ -4,6 +4,11 @@ class GravityComponent : public Component
 {
 public:
 
+	//getter
+
+	//setter
+
 private:
+
 
 };
