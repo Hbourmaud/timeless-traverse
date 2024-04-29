@@ -3,8 +3,10 @@
 #include "Entity.h"
 
 #include "../Components/CollisionComponent.h"
-#include "../Components/RenderComponent.h"
+#include "../Components/SpriteComponent.h"
 #include "../Components/StatsComponent.h"
+
+class SpriteComponent;
 
 class Character : public Entity
 {
@@ -13,7 +15,7 @@ public:
 	~Character();
 
 	CollisionComponent* collisionComponent;
-	RenderComponent* renderComponent;
+	SpriteComponent* spriteComponent;
 	// StatsComponent
 
 private:
