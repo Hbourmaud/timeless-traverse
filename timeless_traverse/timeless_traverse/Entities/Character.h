@@ -16,7 +16,7 @@ public:
 
 	CollisionComponent* collisionComponent;
 	SpriteComponent* spriteComponent;
-	// StatsComponent
+	StatsComponent* statsComponent;
 
 private:
 
