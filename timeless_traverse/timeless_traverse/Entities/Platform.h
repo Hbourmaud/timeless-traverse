@@ -3,7 +3,7 @@
 #include "Entity.h"
 
 #include "../Components/CollisionComponent.h"
-#include "../Components/RenderComponent.h"
+#include "../Components/SpriteComponent.h"
 
 class Platform : public Entity
 {
@@ -12,7 +12,7 @@ public:
 	~Platform();
 
 	CollisionComponent* collisionComponent;
-	RenderComponent* renderComponent;
+	SpriteComponent* spriteComponent;
 
 private:
 
