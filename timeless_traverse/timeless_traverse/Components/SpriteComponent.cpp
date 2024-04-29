@@ -9,13 +9,13 @@ SpriteComponent::~SpriteComponent() = default;
 
 void SpriteComponent::SetSprite(std::string textureName)
 {
-	sf::Texture texture;
+	sf::Texture* texture;
 
-	if (!texture.loadFromFile(textureName))
+	if (!texture->loadFromFile(textureName))
 	{
 		// erreur...
 		return;
 	}
-	texture.setSmooth(true);
-	entitySprite.setTexture(texture);
+	texture->setSmooth(true);
+	entitySprite.setTexture(*texture);
 }
