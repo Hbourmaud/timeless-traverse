@@ -20,6 +20,13 @@ public:
 		bool operator!=(const TVector2D& Other)
 		const { return !(*this == Other); }
 
+		TVector2D operator=(const TVector2D& Other) const
+		{
+			TVector2D Result = TVector2D();
+			Result.X = Other.X;
+			Result.Y = Other.Y;
+		}
+
 		TVector2D operator+(const TVector2D& Other) const
 		{
 			TVector2D Result = TVector2D();
@@ -79,7 +86,7 @@ public:
 		float Distance(const TVector2D& Other);
 		//float Dot(other
 
-	private:
+	public:
 		T X;
 		T Y;
 	};

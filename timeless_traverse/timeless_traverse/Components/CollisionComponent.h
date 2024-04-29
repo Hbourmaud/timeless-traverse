@@ -5,16 +5,17 @@
 class CollisionComponent : public Component
 {
 public:
-	CollisionComponent(float height, float width, float offset);
+	CollisionComponent(float height, float width, float top, float left);
 	~CollisionComponent();
+
+	bool isColliding(const sf::Rect<float>& other);
 	
 	//getter
 	sf::Rect<float> GetCollisionBox() { return collisionBox; }
 	//setter
-	void SetOffset();
+	void SetPosition(float top, float left);
+	void SetSize(float height, float width);
 private:
 	sf::Rect<float> collisionBox;
-	sf::Vector2f offset;
-	//sf::Vector2f relativeLocation;
 	//Entity[] LayerOverrides;
 };

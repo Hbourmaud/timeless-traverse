@@ -1,4 +1,5 @@
 #include "GameManager.h"
+#include "ENtities/Platform.h"
 
 
 GameManager::GameManager() = default;
@@ -34,12 +35,15 @@ void GameManager::GameLoop()
 		/////////////////////////
 		//Calcul
 		
-
+		Platform* platformA = new Platform();
+		sf::Texture* texture = new sf::Texture();
+		texture->loadFromFile("E:/Travail Ynov/C++/timeless-traverse/timeless_traverse/timeless_traverse/Asset/Texture/platform1.png");
+		platformA->renderComponent->SetSprite(texture);
 
 		/////////////////////////
 		//Draw
 		window.clear();
-
+		window.draw(platformA->renderComponent->entitySprite);
 
 
 		window.display();
