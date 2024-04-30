@@ -11,9 +11,12 @@ public:
 	EntityManager();
 	~EntityManager();
 
-	void CreateEntity();
+	Entity* CreateEntity(Entity* entity);
 
 	Entity* GetEntity(int id);
+
+	void Clear(int id);
+	void ClearAll();
 
 private:
 	std::vector<Entity*> entityList;
