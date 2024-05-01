@@ -2,6 +2,6 @@
 
 int main()
 {
-    GameManager game;
+    GameManager& game = GameManager::GetInstance();
     game.Init();
 }

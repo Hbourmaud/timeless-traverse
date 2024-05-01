@@ -8,8 +8,11 @@
 class EntityManager : GameObject
 {
 public:
-	EntityManager();
-	~EntityManager();
+	static EntityManager& GetInstance()
+	{
+		static EntityManager instance;
+		return instance;
+	}
 
 	Entity* CreateEntity(Entity* entity);
 
@@ -19,5 +22,11 @@ public:
 	void ClearAll();
 
 private:
+	EntityManager();
+	~EntityManager();
+
+	EntityManager(const EntityManager&) = delete;
+	EntityManager& operator=(const EntityManager&) = delete;
+	
 	std::vector<Entity*> entityList;
 };

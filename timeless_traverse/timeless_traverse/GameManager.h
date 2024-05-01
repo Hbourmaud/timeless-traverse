@@ -6,13 +6,20 @@
 class GameManager 
 {
 public:
+	static GameManager& GetInstance()
+	{
+		static GameManager instance;
+		return instance;
+	}
+	void Init();
+
+private:
 	GameManager();
 	~GameManager();
 
-	void Init();
-
-	//void
-private:
+	GameManager(const GameManager&) = delete;
+	GameManager& operator=(const GameManager&) = delete;
+	
 	void GameLoop();
 	int screenWidth;
 	int screenHeight;
