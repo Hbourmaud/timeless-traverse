@@ -1,6 +1,9 @@
 ﻿#include "Player.h"
 
-Player::Player() = default;
+Player::Player()
+{
+    physicsComponent = new PhysicsComponent();
+};
 
 Player::~Player() = default;
 

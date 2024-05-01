@@ -1,14 +1,19 @@
-#include "Component.h"
+#pragma once
 
-class GravityComponent : public Component
+#include "Component.h"
+#include "../Math/Vector2D.h"
+
+class PhysicsComponent : public Component
 {
 public:
+	PhysicsComponent();
+	~PhysicsComponent();
 
-	//getter
+	Vector2D::TVector2D<float> GetVelocity() { return velocity; }
 
-	//setter
+	void SetVelocity(Vector2D::TVector2D<float>* velocityVector);
 
 private:
-
-
+	Vector2D::TVector2D<float> velocity;
+	Vector2D::TVector2D<float> gravity;
 };

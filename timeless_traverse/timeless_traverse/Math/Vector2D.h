@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Math.h"
 
 class Vector2D : public Math
@@ -19,13 +21,6 @@ public:
 
 		bool operator!=(const TVector2D& Other)
 		const { return !(*this == Other); }
-
-		TVector2D operator=(const TVector2D& Other) const
-		{
-			TVector2D Result = TVector2D();
-			Result.X = Other.X;
-			Result.Y = Other.Y;
-		}
 
 		TVector2D operator+(const TVector2D& Other) const
 		{
