@@ -1,4 +1,3 @@
-#include <SFML/System/Vector2.hpp>
 #include "../Math/Vector2D.h"
 
 #include "Component.h"
@@ -15,6 +14,7 @@ public:
 	Vector2D::TVector2D<float> GetScale() { return scale; }
 	//setter
 	void SetPosition(float x, float y);
+	void SetPosition(Vector2D::TVector2D<float>);
 	void SetRotation();
 	void SetScale(float x, float y);
 

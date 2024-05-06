@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "Character.h"
+#include "../Components/PhysicsComponent.h"
 
 class Player : public Character
 {
@@ -10,6 +11,10 @@ public:
         static Player instance;
         return instance;
     }
+
+    PhysicsComponent* physicsComponent;
+
+    void ApplyPhysics(float deltaTime);
 
 private:
     Player();

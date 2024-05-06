@@ -1,3 +1,7 @@
+#pragma once
+
+#include <ostream>
+
 #include "Math.h"
 
 class Vector2D : public Math
@@ -20,11 +24,9 @@ public:
 		bool operator!=(const TVector2D& Other)
 		const { return !(*this == Other); }
 
-		TVector2D operator=(const TVector2D& Other) const
+		friend std::ostream& operator<<(std::ostream& os,const TVector2D<float> vector)
 		{
-			TVector2D Result = TVector2D();
-			Result.X = Other.X;
-			Result.Y = Other.Y;
+			return os << "(" << vector.X << ", " << vector.Y << ")";
 		}
 
 		TVector2D operator+(const TVector2D& Other) const
@@ -78,6 +80,33 @@ public:
 		TVector2D operator/(const T& Other) const
 		{
 			return *this / TVector2D(Other);
+		}
+
+		TVector2D& operator=(const TVector2D<float>& Other)
+		{
+			this->X = Other.X;
+			this->Y = Other.Y;
+			return *this;
+		}
+
+		void operator+=(const TVector2D<float>& Other)
+		{
+			*this = *this + Other;
+		}
+
+		void operator-=(const TVector2D<float>& Other)
+		{
+			*this = *this - Other;
+		}
+
+		bool operator!=(const TVector2D<float>& Other)
+		{
+			if (this->X == Other.X && this->Y == Other.Y)
+			{
+				return false;
+			}
+
+			return true;
 		}
 
 		void Normalize();

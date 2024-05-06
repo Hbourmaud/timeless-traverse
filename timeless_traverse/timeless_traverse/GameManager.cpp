@@ -21,6 +21,15 @@ void GameManager::GameLoop()
 	sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "Timeless_Traverse");
 	window.setFramerateLimit(60);
 	sf::Event event;
+
+	float dt = 0.f;
+
+	Player& player = Player::GetInstance();
+	
+	player.spriteComponent->SetSprite("WonderBoy.png");
+
+	player.transformComponent->SetPosition(500.f,500.f);
+	
 	while (window.isOpen())
 	{
 		////////////////////////
