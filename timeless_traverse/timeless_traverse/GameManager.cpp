@@ -1,5 +1,5 @@
 #include "GameManager.h"
-#include "ENtities/Platform.h"
+//#include "ENtities/Platform.h"
 
 
 GameManager::GameManager() = default;
