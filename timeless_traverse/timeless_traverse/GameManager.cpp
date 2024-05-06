@@ -1,4 +1,6 @@
 #include "GameManager.h"
+
+#include "Entities/Player.h"
 //#include "ENtities/Platform.h"
 
 
@@ -19,7 +21,6 @@ void GameManager::GameLoop()
 	sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "Timeless_Traverse");
 	window.setFramerateLimit(60);
 	sf::Event event;
-
 	while (window.isOpen())
 	{
 		////////////////////////

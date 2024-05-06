@@ -18,7 +18,7 @@ public:
     std::vector<std::string> GetTextureLoaded();
 
 private:
-    std::map<std::string, sf::Texture> *textureMap;
+    std::map<std::string, sf::Texture> textureMap;
     int unsigned mapSize;
     int unsigned i;
     sf::Texture* texture;
