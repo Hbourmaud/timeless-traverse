@@ -7,3 +7,7 @@ Player::Player()
 
 Player::~Player() = default;
 
+void Player::ApplyPhysics()
+{
+    transformComponent->SetPosition(transformComponent->GetPosition() - physicsComponent->GetVelocity());
+}

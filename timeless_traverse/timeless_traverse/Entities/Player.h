@@ -14,6 +14,8 @@ public:
 
     PhysicsComponent* physicsComponent;
 
+    void ApplyPhysics();
+
 private:
     Player();
     ~Player();

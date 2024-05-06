@@ -1,5 +1,7 @@
 #pragma once
 
+#include <ostream>
+
 #include "Math.h"
 
 class Vector2D : public Math
@@ -21,6 +23,11 @@ public:
 
 		bool operator!=(const TVector2D& Other)
 		const { return !(*this == Other); }
+
+		friend std::ostream& operator<<(std::ostream& os,const TVector2D<float> vector)
+		{
+			return os << "(" << vector.X << ", " << vector.Y << ")";
+		}
 
 		TVector2D operator+(const TVector2D& Other) const
 		{
