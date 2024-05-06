@@ -82,6 +82,33 @@ public:
 			return *this / TVector2D(Other);
 		}
 
+		TVector2D& operator=(const TVector2D<float>& Other)
+		{
+			this->X = Other.X;
+			this->Y = Other.Y;
+			return *this;
+		}
+
+		void operator+=(const TVector2D<float>& Other)
+		{
+			*this = *this + Other;
+		}
+
+		void operator-=(const TVector2D<float>& Other)
+		{
+			*this = *this - Other;
+		}
+
+		bool operator!=(const TVector2D<float>& Other)
+		{
+			if (this->X == Other.X && this->Y == Other.Y)
+			{
+				return false;
+			}
+
+			return true;
+		}
+
 		void Normalize();
 		void SafeNormalize();
 		float Length();

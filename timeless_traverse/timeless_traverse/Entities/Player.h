@@ -14,7 +14,7 @@ public:
 
     PhysicsComponent* physicsComponent;
 
-    void ApplyPhysics();
+    void ApplyPhysics(float deltaTime);
 
 private:
     Player();

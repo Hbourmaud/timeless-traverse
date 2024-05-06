@@ -1,6 +1,7 @@
 #include "PhysicsComponent.h"
 
 #include <iostream>
+#include <SFML/System/Thread.hpp>
 
 PhysicsComponent::PhysicsComponent()
 {
@@ -22,4 +23,14 @@ void PhysicsComponent::SetVelocity(Vector2D::TVector2D<float>* velocityVector)
     }
     
     velocity = *velocityVector;
+}
+
+void PhysicsComponent::Impulse(Vector2D::TVector2D<float>* impulseForce)
+{
+    velocity += *impulseForce;
+}
+
+void PhysicsComponent::ApplyGravity()
+{
+    velocity += gravity;
 }

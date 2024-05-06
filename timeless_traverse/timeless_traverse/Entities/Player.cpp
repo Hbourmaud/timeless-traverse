@@ -7,7 +7,8 @@ Player::Player()
 
 Player::~Player() = default;
 
-void Player::ApplyPhysics()
+void Player::ApplyPhysics(float deltaTime)
 {
-    transformComponent->SetPosition(transformComponent->GetPosition() - physicsComponent->GetVelocity());
+    transformComponent->SetPosition(transformComponent->GetPosition() - physicsComponent->GetVelocity() * deltaTime);
+    physicsComponent->ApplyGravity();
 }
