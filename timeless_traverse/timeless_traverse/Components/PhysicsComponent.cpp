@@ -9,6 +9,8 @@ PhysicsComponent::PhysicsComponent()
     this->gravity.X = 0.f;
     this->gravity.Y = -5.f;
 
+    isSubjectGravity = false;
+
     this->SetVelocity(new Vector2D::TVector2D(0.f, 0.f));
 }
 
@@ -23,6 +25,7 @@ void PhysicsComponent::SetVelocity(Vector2D::TVector2D<float>* velocityVector)
     }
     
     velocity = *velocityVector;
+    isSubjectGravity = false;
 }
 
 void PhysicsComponent::Impulse(Vector2D::TVector2D<float>* impulseForce)
@@ -33,4 +36,8 @@ void PhysicsComponent::Impulse(Vector2D::TVector2D<float>* impulseForce)
 void PhysicsComponent::ApplyGravity()
 {
     velocity += gravity;
+
+    if (!isSubjectGravity) {
+        isSubjectGravity = true;
+    }
 }
