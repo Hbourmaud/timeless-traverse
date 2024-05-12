@@ -10,6 +10,7 @@ public:
 	~PhysicsComponent();
 
 	Vector2D::TVector2D<float> GetVelocity() { return velocity; }
+	bool GetSubjectToGravity() { return isSubjectGravity; }
 
 	void SetVelocity(Vector2D::TVector2D<float>* velocityVector);
 
@@ -19,4 +20,5 @@ public:
 private:
 	Vector2D::TVector2D<float> velocity;
 	Vector2D::TVector2D<float> gravity;
+	bool isSubjectGravity;
 };
