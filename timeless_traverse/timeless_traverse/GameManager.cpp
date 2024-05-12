@@ -1,6 +1,9 @@
 #include "GameManager.h"
 
+#include <iostream>
+
 #include "Entities/Player.h"
+#include "Managers/InputManager.h"
 //#include "ENtities/Platform.h"
 
 
@@ -22,6 +25,8 @@ void GameManager::GameLoop()
 	window.setFramerateLimit(60);
 	sf::Event event;
 
+	InputManager& IM = InputManager::GetInstance();
+
 	float dt = 0.f;
 
 	Player& player = Player::GetInstance();
@@ -36,6 +41,8 @@ void GameManager::GameLoop()
 		//Input
 		while (window.pollEvent(event))
 		{
+			IM.HandleInput(event);
+			
 			if (event.type == sf::Event::Closed)
 			{
 				window.close();

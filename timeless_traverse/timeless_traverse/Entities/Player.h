@@ -15,6 +15,9 @@ public:
     PhysicsComponent* physicsComponent;
 
     void ApplyPhysics(float deltaTime);
+    void MoveHorizontal(float direction);
+    void Jump();
+    void Action();
 
 private:
     Player();

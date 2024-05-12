@@ -3,6 +3,7 @@
 #include <SFML/Window/Event.hpp>
 
 #include "../GameObject.h"
+#include "../Delegate.h"
 
 class InputManager : GameObject
 {
@@ -14,6 +15,15 @@ public:
     }
 
     void HandleInput(sf::Event event);
+
+    DECLARE_DELEGATE(CharacterMovement, float)
+    CharacterMovement MovementDelegate;
+
+    DECLARE_DELEGATE(CharacterJump)
+    CharacterJump JumpDelegate;
+
+    DECLARE_DELEGATE(CharacterAction)
+    CharacterAction ActionDelegate;
 
 private:
     InputManager();
