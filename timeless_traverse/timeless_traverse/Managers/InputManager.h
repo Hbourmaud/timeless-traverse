@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
 
 #include "../GameObject.h"
@@ -15,6 +16,7 @@ public:
     }
 
     void HandleInput(sf::Event event);
+    sf::Vector2f GetMousePosition(const sf::RenderWindow& window);
 
     DECLARE_DELEGATE(CharacterMovement, float)
     CharacterMovement MovementDelegate;

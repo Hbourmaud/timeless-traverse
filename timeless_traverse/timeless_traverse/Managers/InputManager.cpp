@@ -1,5 +1,4 @@
 ﻿#include "InputManager.h"
-
 #include "../GameManager.h"
 
 InputManager::InputManager() = default;
@@ -30,4 +29,12 @@ void InputManager::HandleInput(sf::Event event)
             ActionDelegate.BroadCast();
         }
     }
+}
+
+sf::Vector2f InputManager::GetMousePosition(const sf::RenderWindow& window)
+{
+    sf::Vector2i mousePos = sf::Mouse::getPosition( window );
+    sf::Vector2f mousePosF( static_cast<float>( mousePos.x ), static_cast<float>( mousePos.y ) );
+
+    return mousePosF;
 }

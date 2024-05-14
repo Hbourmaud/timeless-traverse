@@ -38,5 +38,8 @@ void Widget::draw(sf::RenderWindow* window)
     window->draw(*m_text);
 }
 
-
+void Widget::onClick()
+{
+    m_onClick();
+}
 
