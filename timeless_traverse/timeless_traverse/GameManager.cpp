@@ -4,6 +4,8 @@
 
 #include "Entities/Player.h"
 #include "Managers/InputManager.h"
+
+#include "Entities/Platform.h"
 //#include "ENtities/Platform.h"
 
 
