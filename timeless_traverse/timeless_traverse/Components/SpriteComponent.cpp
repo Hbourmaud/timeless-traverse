@@ -14,4 +14,7 @@ void SpriteComponent::SetSprite(std::string textureName)
 	entitySprite.setTexture(*texture);
 }
 
-
+void SpriteComponent::setPosition(float x, float y)
+{
+	entitySprite.setPosition(x,y);
+}

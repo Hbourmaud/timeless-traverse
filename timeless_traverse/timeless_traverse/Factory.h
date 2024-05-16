@@ -19,8 +19,7 @@ public:
     Base* Create(const std::type_info& classType) {
         auto it = creators.find(&classType);
         if (it != creators.end()) {
-            EntityManager::GetInstance().CreateEntity(it->second());
-            return it->second();
+            return EntityManager::GetInstance().CreateEntity(it->second());
         }
         return nullptr;
     }

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <SFML/Graphics/Sprite.hpp>
 #include "sfml/graphics/Texture.hpp"
 #include "Component.h"
@@ -11,6 +13,7 @@ public:
 	~SpriteComponent();
 	sf::Sprite GetSprite() { return entitySprite; }
 	void SetSprite(std::string textureName);
+	void setPosition(float x, float y);
 
 private:
 	sf::Texture* texture;
