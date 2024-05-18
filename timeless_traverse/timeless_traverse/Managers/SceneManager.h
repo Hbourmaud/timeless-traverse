@@ -25,5 +25,5 @@ private:
     sf::Window* window;
     Player* player;
     
-    void UpdateEntities();
+    void UpdateEntities(float deltaTime);
 };

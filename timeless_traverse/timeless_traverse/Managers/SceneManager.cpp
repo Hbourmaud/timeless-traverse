@@ -34,7 +34,7 @@ void SceneManager::UnloadLevel()
 
 void SceneManager::DoPhysics(float deltaTime)
 {
-	UpdateEntities();
+	UpdateEntities(deltaTime);
 	player->ApplyPhysics(deltaTime);
 }
 
@@ -65,7 +65,7 @@ void SceneManager::SetUpCollisionBox()
 }
 
 
-void SceneManager::UpdateEntities()
+void SceneManager::UpdateEntities(float deltaTime)
 {
 	player->spriteComponent->setPosition(player->transformComponent->GetPosition().X, player->transformComponent->GetPosition().Y);
 	player->collisionComponent->SetPosition(player->transformComponent->GetPosition().Y, player->transformComponent->GetPosition().X);
@@ -88,7 +88,9 @@ void SceneManager::UpdateEntities()
 		if(typeid(*entity) == typeid(Enemy))
 		{
 			Enemy *enemy = dynamic_cast<Enemy*>(entity);
-			enemy->spriteComponent->setPosition(entity->transformComponent->GetPosition().Y, entity->transformComponent->GetPosition().X);
+			enemy->ApplyPhysics(deltaTime);
+			enemy->spriteComponent->setPosition(entity->transformComponent->GetPosition().X, entity->transformComponent->GetPosition().Y);
+			enemy->collisionComponent->SetPosition(entity->transformComponent->GetPosition().Y, entity->transformComponent->GetPosition().X);
 			continue;
 		}
 	}
