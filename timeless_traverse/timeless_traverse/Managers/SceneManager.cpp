@@ -34,8 +34,8 @@ void SceneManager::UnloadLevel()
 
 void SceneManager::DoPhysics(float deltaTime)
 {
-	player->ApplyPhysics(deltaTime);
 	UpdateEntities();
+	player->ApplyPhysics(deltaTime);
 }
 
 void SceneManager::SetUpCollisionBox()
@@ -68,8 +68,9 @@ void SceneManager::SetUpCollisionBox()
 void SceneManager::UpdateEntities()
 {
 	player->spriteComponent->setPosition(player->transformComponent->GetPosition().X, player->transformComponent->GetPosition().Y);
-	player->collisionComponent->SetPosition(player->transformComponent->GetPosition().X, player->transformComponent->GetPosition().Y);
-
+	player->collisionComponent->SetPosition(player->transformComponent->GetPosition().Y, player->transformComponent->GetPosition().X);
+	player->collisionComponent->SetDirectionalCollisionBox();
+	
 	std::vector<Entity*> entityList = EntityManager::GetInstance().GetEntityList();
 	for (auto entity : entityList)
 	{
@@ -77,21 +78,17 @@ void SceneManager::UpdateEntities()
 		{
 			Platform *platform = dynamic_cast<Platform*>(entity);
 			platform->spriteComponent->setPosition(entity->transformComponent->GetPosition().X, entity->transformComponent->GetPosition().Y);
-			platform->collisionComponent->SetPosition(entity->transformComponent->GetPosition().X, entity->transformComponent->GetPosition().Y);
+			platform->collisionComponent->SetPosition(entity->transformComponent->GetPosition().Y, entity->transformComponent->GetPosition().X);
 
-			if (player->collisionComponent->isColliding(platform->collisionComponent->GetCollisionBox()))
-			{
-				std::cout << "iscolliding" << std::endl;
-				player->physicsComponent->SetVelocity(new Vector2D::TVector2D(player->physicsComponent->GetVelocity().X, 0.f));
-			}
-
+			player->OnCollision(player->collisionComponent->directionalColliding(platform->collisionComponent->GetCollisionBox()));
+			
 			continue;
 		}
 
 		if(typeid(*entity) == typeid(Enemy))
 		{
 			Enemy *enemy = dynamic_cast<Enemy*>(entity);
-			enemy->spriteComponent->setPosition(entity->transformComponent->GetPosition().X, entity->transformComponent->GetPosition().Y);
+			enemy->spriteComponent->setPosition(entity->transformComponent->GetPosition().Y, entity->transformComponent->GetPosition().X);
 			continue;
 		}
 	}

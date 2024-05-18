@@ -30,3 +30,43 @@ void Player::Jump()
 {
     physicsComponent->Impulse(new Vector2D::TVector2D(0.f, 200.f));
 }
+
+void Player::OnCollision(CollisionComponent::Direction directionColliding)
+{
+    switch (directionColliding)
+    {
+    case CollisionComponent::bottom:
+        {
+            if (physicsComponent->GetVelocity().Y < 0.f)
+            {
+                physicsComponent->SetVelocity(new Vector2D::TVector2D(physicsComponent->GetVelocity().X, 0.f));
+            }
+            break;
+        }
+    case CollisionComponent::top:
+        {
+            if (physicsComponent->GetVelocity().Y > 0.f)
+            {
+                physicsComponent->SetVelocity(new Vector2D::TVector2D(physicsComponent->GetVelocity().X, 0.f));
+            }
+            break;
+        }
+    case CollisionComponent::left:
+        {
+            if (physicsComponent->GetVelocity().X > 0.f)
+            {
+                physicsComponent->SetVelocity(new Vector2D::TVector2D(0.f, physicsComponent->GetVelocity().Y));
+            }
+            break;
+        }
+    case CollisionComponent::right:
+        {
+            if (physicsComponent->GetVelocity().X < 0.f)
+            {
+                physicsComponent->SetVelocity(new Vector2D::TVector2D(0.f, physicsComponent->GetVelocity().Y));   
+            }
+            break;
+        }
+    default: ;
+    }
+}
