@@ -1,4 +1,4 @@
-Générer la solution:
+## Générer la solution
 
 Afin de générer la solution il faut:
 - Télécharger le projet sur git
@@ -15,9 +15,13 @@ Afin de générer la solution il faut:
     - Lors de la demande, sélectionner votre compiler et laisser les options par défaut
 - Enfin, il suffit de cliquer sur Generate et la solution se trouvera dans le dossier indiqué dans le champ "Where to build the binaries: "
 
-Configuration:
+## Configuration
 Afin de lancer le projet il faut:
 - Ouvrir la solution *timeless_traverse.sln* se trouvant dans le dossier ../out/binaries du projet
 - Dans la fenêtre "explorateur de solution", faire un clique droit sur le nom du projet et sélectionner "Définir en tant que projet de démarrage"
 - Configurer votre working directory en indiquant le chemin du projet (pointant le dossier contenant *Asset, Components, Entities ...*)
 - Le projet peut maintenant être démarré en cliquant sur le bouton play
+
+## Architecture du projet
+
+![ECS](img/ECS.png)
