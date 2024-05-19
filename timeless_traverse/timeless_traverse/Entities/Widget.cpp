@@ -20,6 +20,7 @@ Widget::~Widget() = default;
 
 void Widget::setText(std::string text, sf::Color color, int size) const
 {
+    m_text->setPosition(transformComponent->GetPosition().X,transformComponent->GetPosition().Y);
     m_text->setString(text);
     m_text->setFillColor(color);
     m_text->setCharacterSize(size);

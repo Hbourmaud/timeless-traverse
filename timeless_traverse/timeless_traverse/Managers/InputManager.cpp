@@ -33,8 +33,7 @@ void InputManager::HandleInput(sf::Event event)
 
 sf::Vector2f InputManager::GetMousePosition(const sf::RenderWindow& window)
 {
-    sf::Vector2i mousePos = sf::Mouse::getPosition( window );
-    sf::Vector2f mousePosF( static_cast<float>( mousePos.x ), static_cast<float>( mousePos.y ) );
+    sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition( window ));
 
-    return mousePosF;
+    return mousePos;
 }
