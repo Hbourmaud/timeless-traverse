@@ -6,7 +6,7 @@
 #include "../Entities/Platform.h"
 #include "../Entities/Player.h"
 
-SceneManager::SceneManager(sf::Window* win)
+SceneManager::SceneManager(sf::RenderWindow* win)
 {
 	player = &Player::GetInstance();
 	window = win;
@@ -75,6 +75,7 @@ void SceneManager::UpdateEntities(float deltaTime)
 	
 	std::vector<Entity*> entityList = EntityManager::GetInstance().GetEntityList();
 	std::vector<Platform*> platforms;
+	
 	for (auto entity : entityList)
 	{
 		if(typeid(*entity) == typeid(Platform))
@@ -86,6 +87,8 @@ void SceneManager::UpdateEntities(float deltaTime)
 			platform->collisionComponent->SetPosition(entity->transformComponent->GetPosition().Y, entity->transformComponent->GetPosition().X);
 
 			player->OnCollision(player->collisionComponent->directionalColliding(platform->collisionComponent->GetCollisionBox()));
+
+			window->draw(platform->spriteComponent->GetSprite());
 		}
 
 	}
@@ -108,6 +111,8 @@ void SceneManager::UpdateEntities(float deltaTime)
 					enemy->physicsComponent->SetVelocity(new Vector2D::TVector2D(enemy->physicsComponent->GetVelocity().X, 0.f));
 				}
 			}
+			
+			window->draw(enemy->spriteComponent->GetSprite());
 		}
 	}
 }
