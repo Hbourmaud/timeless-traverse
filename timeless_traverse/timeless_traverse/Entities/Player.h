@@ -3,6 +3,9 @@
 #include "Character.h"
 #include "../Components/PhysicsComponent.h"
 
+/*
+ * Singleton
+*/
 class Player : public Character
 {
 public:

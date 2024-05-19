@@ -31,8 +31,8 @@ void SceneManager::SetCamera(float x, float y)
 
 bool SceneManager::LoadLevel(std::string levelName, Factory<Entity> factory)
 {
-	// afin de charger les niveaux, on utilise un fichier json contenant toute les informations n�cessaires
-	// � la cr�ation des entit�s d'un niveau (joueur, ennemie, plate-forme...) 
+	// in order to load the levels, a json file containing all the necessary information is used
+	// the creation of entities of a level (player, enemy, platform...) 
 
 	factory.Register<Platform>();
 	factory.Register<Enemy>();
@@ -47,7 +47,7 @@ bool SceneManager::LoadLevel(std::string levelName, Factory<Entity> factory)
 
 	player->physicsComponent->SetVelocity(0);
 
-	// it�ration dans le fichier JSON
+	// iteration in JSON file
 	int j = 0;
 	for (auto it = level.at("entities").begin(); it != level.at("entities").end(); ++it)
 	{
@@ -57,7 +57,7 @@ bool SceneManager::LoadLevel(std::string levelName, Factory<Entity> factory)
 		std::string text = "";
 		std::string size = "";
 
-		//r�cup�ration des information de l'entit�
+		//	get entity information
 		if (!level.at("entities")[j].empty())
 		{
 			if (!level.at("entities")[j].at("entitieName").empty())  
@@ -85,7 +85,7 @@ bool SceneManager::LoadLevel(std::string levelName, Factory<Entity> factory)
 					text = level.at("entities")[j].at("text");
 				}
 
-				//creation et parametrage des entites du niveaux
+				//setup entities of level
 				if (entities == "Platform")
 				{
 					Platform* platform = dynamic_cast<Platform*>(factory.Create(typeid(Platform)));
@@ -133,7 +133,6 @@ bool SceneManager::LoadLevel(std::string levelName, Factory<Entity> factory)
 
 void SceneManager::UnloadLevel()
 {
-	int entityListSize = EntityManager::GetInstance().GetEntityList().size();
 	int j = 0;
 	std::vector<Entity*> entityArray;
 	entityArray = EntityManager::GetInstance().GetEntityList();

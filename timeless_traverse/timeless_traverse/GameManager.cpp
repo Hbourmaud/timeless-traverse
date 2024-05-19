@@ -1,8 +1,6 @@
 #include "GameManager.h"
 
 #include "Factory.h"
-#include "Entities/Enemy.h"
-#include "Entities/Platform.h"
 #include "Entities/Player.h"
 #include "Entities/Widget.h"
 #include "Managers/EntityManager.h"
@@ -30,7 +28,6 @@ void GameManager::GameLoop()
 	float dt = 0.f;
 	
 	InputManager& IM = InputManager::GetInstance();
-	EntityManager& EM = EntityManager::GetInstance();
 	SceneManager* SM = new SceneManager(&window);
 
 	Player& player = Player::GetInstance();
@@ -44,8 +41,6 @@ void GameManager::GameLoop()
 	
 	while (window.isOpen())
 	{
-		////////////////////////
-		//Input
 		while (window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)

@@ -18,6 +18,4 @@ public:
 	SpriteComponent* spriteComponent;
 	StatsComponent* statsComponent;
 
-private:
-
 };

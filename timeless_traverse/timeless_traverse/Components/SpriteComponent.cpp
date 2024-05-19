@@ -9,7 +9,7 @@ SpriteComponent::~SpriteComponent() = default;
 
 void SpriteComponent::SetSprite(std::string textureName)
 {
-	texture = assetManager.GetTexture(textureName);//new sf::Texture;
+	texture = assetManager.GetTexture(textureName);
 	texture->setSmooth(true);
 	entitySprite.setTexture(*texture);
 }

@@ -6,6 +6,9 @@
 #include "../GameObject.h"
 #include "../Delegate.h"
 
+/*
+ * Singleton
+*/
 class InputManager : GameObject
 {
 public:

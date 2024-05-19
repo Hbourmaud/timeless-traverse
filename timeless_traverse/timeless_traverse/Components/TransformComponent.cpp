@@ -15,10 +15,7 @@ void TransformComponent::SetPosition(Vector2D::TVector2D<float> newPosition)
 	position = newPosition;
 };
 
-void TransformComponent::SetRotation()
-{
-	//à faire
-}
+void TransformComponent::SetRotation(){}
 
 void TransformComponent::SetScale(float x, float y)
 {

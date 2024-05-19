@@ -2,9 +2,11 @@
 
 #include "../Entities/Entity.h"
 
-#include <iostream>
 #include <vector>
 
+/*
+ * Singleton
+*/
 class EntityManager : GameObject
 {
 public:

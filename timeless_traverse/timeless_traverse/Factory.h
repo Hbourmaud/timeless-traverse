@@ -6,6 +6,9 @@
 
 #include "Managers/EntityManager.h"
 
+/**
+ * Very simple implementation of factory system
+ */
 template<typename Base>
 class Factory {
 public:

@@ -113,7 +113,6 @@ public:
 		void SafeNormalize();
 		float Length();
 		float Distance(const TVector2D& Other);
-		//float Dot(other
 
 	public:
 		T X;

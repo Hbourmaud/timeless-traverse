@@ -9,7 +9,7 @@ sf::Texture * AssetManager::GetTexture(std::string textureName)
 {
 	if (textureMap.contains(textureName))
 	{
-		return &textureMap.at(textureName);//[];
+		return &textureMap.at(textureName);
 	}
 	else
 	{

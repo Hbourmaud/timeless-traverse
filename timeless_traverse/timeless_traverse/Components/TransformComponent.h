@@ -8,11 +8,10 @@ public:
 	TransformComponent();
 	~TransformComponent();
 
-	//getter
 	Vector2D::TVector2D<float>GetPosition() { return position; }
 	Vector2D::TVector2D<float> GetRotation() { return rotation; }
 	Vector2D::TVector2D<float> GetScale() { return scale; }
-	//setter
+	
 	void SetPosition(float x, float y);
 	void SetPosition(Vector2D::TVector2D<float>);
 	void SetRotation();
