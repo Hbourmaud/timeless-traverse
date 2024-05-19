@@ -1,0 +1,23 @@
+{
+    "entities": [
+        {
+            "entitieName": "Platform",
+            "texture": "platform1.png",
+            "xPos": 10,
+            "yPos": 10
+        },
+        {
+            "entitieName": "Enemy",
+            "texture": "enemy.png",
+            "xPos": 100,
+            "yPos": 10
+        },
+        {
+            "entitieName": "Player",
+            "texture": "WonderBoy.png",
+            "xPos": 10,
+            "yPos": 5
+        }
+    ],
+    "levelName": "level1"
+}

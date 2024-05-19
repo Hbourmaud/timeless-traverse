@@ -1,6 +1,8 @@
 #pragma once
-#include <windows.data.json.h>
 #include "../GameObject.h"
+#include <fstream>
+#include "../Factory.h"
+#include "../Utilitaire/json.hpp"
 #include "SFML/Graphics.hpp"
 
 
@@ -13,7 +15,7 @@ public:
     SceneManager(sf::RenderWindow* win);
     ~SceneManager() = default;
 
-    void LoadLevel(std::string levelName);
+    void LoadLevel(std::string levelName, Factory<Entity> factory);
     void UnloadLevel();
     void DoPhysics(float deltaTime);
     void SetUpCollisionBox();

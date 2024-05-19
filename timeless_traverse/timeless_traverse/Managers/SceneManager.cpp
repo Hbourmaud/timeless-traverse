@@ -1,10 +1,11 @@
 #include "SceneManager.h"
 
-#include "EntityManager.h"
+#include "../Factory.h"
 #include "../Entities/Character.h"
 #include "../Entities/Enemy.h"
 #include "../Entities/Platform.h"
 #include "../Entities/Player.h"
+using json = nlohmann::json;
 
 SceneManager::SceneManager(sf::RenderWindow* win)
 {
@@ -24,14 +25,75 @@ void SceneManager::SetCamera(float x, float y)
 	camera->setCenter(x, y);
 }
 
-void SceneManager::LoadLevel(std::string levelName)
+void SceneManager::LoadLevel(std::string levelName, Factory<Entity> factory)
 {
+	// afin de charger les niveaux, on utilise un fichier json contenant toute les informations n�cessaires
+	// � la cr�ation des entit�s d'un niveau (joueur, ennemie, plate-forme...) 
+
+	factory.Register<Platform>();
+	factory.Register<Enemy>();
+	std::string path = std::filesystem::current_path().generic_string() + "/Asset/Level/" + levelName;
 	
+	std::ifstream levelFile(path);
+
+	json level = json::parse(levelFile);
+
+	// it�ration dans le fichier JSON
+	int j = 0;
+	for (auto it = level.at("entities").begin(); it != level.at("entities").end(); ++it)
+	{
+		float xpos = 0;
+		float ypos = 0;
+		std::string textureName = "";
+
+		//r�cup�ration des information de l'entit�
+		if (!level.at("entities")[j].empty())
+		{
+			if (!level.at("entities")[j].at("entitieName").empty())  
+			{
+				std::string entities = level.at("entities")[j].at("entitieName");
+
+				if (!level.at("entities")[j].at("xPos").empty())
+				{
+					xpos = level.at("entities")[j].at("xPos");
+				}
+				if (!level.at("entities")[j].at("yPos").empty())
+				{
+					ypos = level.at("entities")[j].at("yPos");
+				}
+				if (!level.at("entities")[j].at("texture").empty())
+				{
+					textureName = level.at("entities")[j].at("texture");
+				}
+
+				//cr�ation et param�trage des entit�s du niveaux
+				if (entities == "Platform")
+				{
+					Platform* platform = dynamic_cast<Platform*>(factory.Create(typeid(Platform)));
+					platform->transformComponent->SetPosition(xpos, ypos);
+					platform->spriteComponent->SetSprite(textureName);
+				}
+				else if (entities == "Enemy")
+				{
+					Enemy* enemy = dynamic_cast<Enemy*>(factory.Create(typeid(Enemy)));
+					enemy->transformComponent->SetPosition(xpos, ypos);
+					enemy->spriteComponent->SetSprite(textureName);
+				}
+				else if (entities == "Player")
+				{
+					Player::GetInstance().transformComponent->SetPosition(xpos, ypos);
+					Player::GetInstance().spriteComponent->SetSprite(textureName);
+				}
+			}
+		}
+		j++;
+	}
 }
 
 void SceneManager::UnloadLevel()
 {
-
+	//EntityManager entity_manager();
+	//entity_manager().ClearAll();
 }
 
 void SceneManager::DoPhysics(float deltaTime)
