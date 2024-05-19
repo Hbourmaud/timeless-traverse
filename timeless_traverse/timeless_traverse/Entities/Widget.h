@@ -12,9 +12,9 @@ public:
     ~Widget();
 
     void setText(std::string text, sf::Color color = sf::Color::White, int size = 50) const;
-    void setShape(sf::Shape* shape);
+    void setShape(sf::RectangleShape* shape);
 
-    sf::Shape* getShape() { return m_shape; }
+    sf::RectangleShape* getShape() { return m_shape; }
 
     template<typename T>
     void setOnClick(T method)
@@ -29,7 +29,7 @@ public:
 
 private:
     sf::Text* m_text;
-    sf::Shape* m_shape;
+    sf::RectangleShape* m_shape;
     sf::Font font;
 
     std::function<void()> m_onClick;

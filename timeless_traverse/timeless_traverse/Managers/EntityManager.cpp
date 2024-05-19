@@ -32,8 +32,14 @@ std::vector<Entity*> EntityManager::GetEntityList()
 void EntityManager::Clear(int id)
 {
 	Entity* entity = this->GetEntity(id);
-	delete []entity;
+	for (const Entity* i : entityList)
+	{
+		if (i->GetId() == id)
+			entityList.erase(std::find(entityList.begin(), entityList.end(), GetEntity(id)));
+	}
+	delete[]entity;
 	entity = nullptr;
+
 }
 
 void EntityManager::ClearAll()

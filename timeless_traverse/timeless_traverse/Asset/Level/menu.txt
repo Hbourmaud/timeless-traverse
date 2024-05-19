@@ -1,0 +1,29 @@
+{
+    "entities": [
+        {
+            "entitieName": "text",
+            "size": "",
+            "text": "Press R to play / restart",
+            "texture": "",
+            "xPos": 700,
+            "yPos": 400
+        },
+        {
+            "entitieName": "button",
+            "size": "",
+            "text": "QUIT",
+            "texture": "",
+            "xPos": 900,
+            "yPos": 600
+        },
+        {
+            "entitieName": "text",
+            "size": "",
+            "text": "TIMELESS TRAVERSE",
+            "texture": "",
+            "xPos": 700,
+            "yPos": 5
+        }
+    ],
+    "levelName": "menu"
+}

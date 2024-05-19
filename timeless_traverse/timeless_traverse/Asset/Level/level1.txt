@@ -1,0 +1,117 @@
+{
+    "entities": [
+        {
+            "entitieName": "Platform",
+            "size": "",
+            "text": "",
+            "texture": "platform1.png",
+            "xPos": 500,
+            "yPos": 500
+        },
+        {
+            "entitieName": "Platform",
+            "size": "",
+            "text": "",
+            "texture": "platform1.png",
+            "xPos": 548,
+            "yPos": 450
+        },
+        {
+            "entitieName": "Platform",
+            "size": "",
+            "text": "",
+            "texture": "platform1.png",
+            "xPos": 452,
+            "yPos": 500
+        },
+        {
+            "entitieName": "Platform",
+            "size": "",
+            "text": "",
+            "texture": "platform1.png",
+            "xPos": 404,
+            "yPos": 500
+        },
+        {
+            "entitieName": "Platform",
+            "size": "",
+            "text": "",
+            "texture": "platform1.png",
+            "xPos": 356,
+            "yPos": 500
+        },
+        {
+            "entitieName": "Platform",
+            "size": "",
+            "text": "",
+            "texture": "platform1.png",
+            "xPos": 596,
+            "yPos": 450
+        },
+        {
+            "entitieName": "Platform",
+            "size": "",
+            "text": "",
+            "texture": "platform1.png",
+            "xPos": 644,
+            "yPos": 450
+        },
+        {
+            "entitieName": "Platform",
+            "size": "",
+            "text": "",
+            "texture": "platform1.png",
+            "xPos": 692,
+            "yPos": 450
+        },
+        {
+            "entitieName": "Platform",
+            "size": "",
+            "text": "",
+            "texture": "platform1.png",
+            "xPos": 740,
+            "yPos": 450
+        },
+        {
+            "entitieName": "Platform",
+            "size": "",
+            "text": "",
+            "texture": "platform1.png",
+            "xPos": 600,
+            "yPos": 300
+        },
+        {
+            "entitieName": "Platform",
+            "size": "",
+            "text": "",
+            "texture": "platform1.png",
+            "xPos": 648,
+            "yPos": 300
+        },
+        {
+            "entitieName": "Enemy",
+            "size": "",
+            "text": "",
+            "texture": "enemy.png",
+            "xPos": 560,
+            "yPos": 400
+        },
+        {
+            "entitieName": "Enemy",
+            "size": "",
+            "text": "",
+            "texture": "enemy.png",
+            "xPos": 647,
+            "yPos": 250
+        },
+        {
+            "entitieName": "Player",
+            "size": "",
+            "text": "",
+            "texture": "WonderBoy.png",
+            "xPos": 360,
+            "yPos": 470
+        }
+    ],
+    "levelName": "level1"
+}

@@ -4,6 +4,7 @@
 #include "Entities/Enemy.h"
 #include "Entities/Platform.h"
 #include "Entities/Player.h"
+#include "Entities/Widget.h"
 #include "Managers/EntityManager.h"
 #include "Managers/InputManager.h"
 
@@ -34,25 +35,10 @@ void GameManager::GameLoop()
 
 	Player& player = Player::GetInstance();
 	player.spriteComponent->SetSprite("WonderBoy.png");
-	player.transformComponent->SetPosition(500.f, 450.f);
 
 	Factory<Entity> factory;
 
-	factory.Register<Platform>();
-	factory.Register<Enemy>();
-	
-	Platform* platformA = dynamic_cast<Platform*>(factory.Create(typeid(Platform)));
-	Platform* platformB = dynamic_cast<Platform*>(factory.Create(typeid(Platform)));
-	
-	platformA->spriteComponent->SetSprite("platform1.png");
-	platformA->transformComponent->SetPosition(500.f,500.f);
-	
-	platformB->spriteComponent->SetSprite("platform1.png");
-	platformB->transformComponent->SetPosition(560.f,450.f);
-
-	Enemy* enemyA = dynamic_cast<Enemy*>(factory.Create(typeid(Enemy)));
-	enemyA->spriteComponent->SetSprite("enemy.png");
-	enemyA->transformComponent->SetPosition(560.f, 400.f);
+	SM->LoadLevel("menu.txt", factory);
 
 	SM->SetUpCollisionBox();
 	
@@ -66,30 +52,27 @@ void GameManager::GameLoop()
 			{
 				window.close();
 			}
+			if (event.key.code == sf::Keyboard::R)
+			{
+				SM->UnloadLevel();
+				SM->LoadLevel("level1.txt", factory);
+				SM->SetUpCollisionBox();
+				inMenu = false;
+			}
 
 			IM.HandleInput(event);
-
 		}
-		/////////////////////////
-		//Calcul
-
+		
 		SM->SetCamera(player.transformComponent->GetPosition().X,player.transformComponent->GetPosition().Y);
-		window.setView(*SM->GetCamera());
+		if (!inMenu) window.setView(*SM->GetCamera());
 		
 		window.clear();
-
-		SM->DoPhysics(dt);
-
-		//sf::Texture* texture = new sf::Texture();
-		//texture->loadFromFile("E:/Travail Ynov/C++/timeless-traverse/timeless_traverse/timeless_traverse/Asset/Texture/platform1.png");
-
-		/////////////////////////
-		//Draw
+		
+		SM->DoPhysics(dt, event);
+		
 		window.draw(player.spriteComponent->GetSprite());
-
 		window.display();
-		/////////////////////////
-		//DeltaTime
+		
 		dt = timeBetweenFrame.restart().asSeconds();
 	}
 }

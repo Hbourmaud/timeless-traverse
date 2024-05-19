@@ -25,5 +25,6 @@ private:
 	int screenWidth;
 	int screenHeight;
 	float dt;
+	bool inMenu = true;
 	sf::Clock startClock;
 };
