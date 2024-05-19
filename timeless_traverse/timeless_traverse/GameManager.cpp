@@ -75,6 +75,8 @@ void GameManager::GameLoop()
 
 		SM->SetCamera(player.transformComponent->GetPosition().X,player.transformComponent->GetPosition().Y);
 		window.setView(*SM->GetCamera());
+		
+		window.clear();
 
 		SM->DoPhysics(dt);
 
@@ -83,11 +85,7 @@ void GameManager::GameLoop()
 
 		/////////////////////////
 		//Draw
-		window.clear();
-		window.draw(platformA->spriteComponent->GetSprite());
-		window.draw(platformB->spriteComponent->GetSprite());
 		window.draw(player.spriteComponent->GetSprite());
-		window.draw(enemyA->spriteComponent->GetSprite());
 
 		window.display();
 		/////////////////////////

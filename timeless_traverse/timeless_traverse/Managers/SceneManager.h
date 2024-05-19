@@ -10,7 +10,7 @@ class SceneManager : public GameObject
 {
 public:
     SceneManager();
-    SceneManager(sf::Window* win);
+    SceneManager(sf::RenderWindow* win);
     ~SceneManager() = default;
 
     void LoadLevel(std::string levelName);
@@ -22,7 +22,7 @@ public:
 
 private:
     sf::View* camera;
-    sf::Window* window;
+    sf::RenderWindow* window;
     Player* player;
     
     void UpdateEntities(float deltaTime);
