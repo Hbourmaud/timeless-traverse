@@ -15,10 +15,11 @@ public:
     SceneManager(sf::RenderWindow* win);
     ~SceneManager() = default;
 
-    void LoadLevel(std::string levelName, Factory<Entity> factory);
+    bool LoadLevel(std::string levelName, Factory<Entity> factory);
     void UnloadLevel();
     void DoPhysics(float deltaTime);
     void SetUpCollisionBox();
+    int quitGame() { if (window->isOpen()) { window->close(); return 1; } }
     void SetCamera(float x, float y);
     sf::View* GetCamera() { return camera; }
 

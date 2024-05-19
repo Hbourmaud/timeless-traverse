@@ -1,0 +1,53 @@
+{
+    "entities": [
+        {
+            "entitieName": "Platform",
+            "size": "",
+            "text": "",
+            "texture": "platform1.png",
+            "xPos": 10,
+            "yPos": 10
+        },
+        {
+            "entitieName": "Enemy",
+            "size": "",
+            "text": "",
+            "texture": "enemy.png",
+            "xPos": 100,
+            "yPos": 10
+        },
+        {
+            "entitieName": "Player",
+            "size": "",
+            "text": "",
+            "texture": "WonderBoy.png",
+            "xPos": 10,
+            "yPos": 5
+        },
+        {
+            "entitieName": "button",
+            "size": "",
+            "text": "PLAY",
+            "texture": "",
+            "xPos": 10,
+            "yPos": 5
+        },
+        {
+            "entitieName": "button",
+            "size": "",
+            "text": "QUIT",
+            "texture": "",
+            "xPos": 10,
+            "yPos": 5
+        },
+        {
+            "entitieName": "text",
+            "size": "",
+            "text": "TIMELESS TRAVERSE",
+            "texture": "",
+            "xPos": 10,
+            "yPos": 5
+        }
+    ],
+    "levelName": "level1"
+}

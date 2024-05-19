@@ -2,24 +2,32 @@
     "entities": [
         {
             "entitieName": "Platform",
+            "size": "",
+            "text": "",
             "texture": "platform1.png",
             "xPos": 500,
             "yPos": 500
         },
         {
             "entitieName": "Platform",
+		    "size": "",
+            "text": "",
             "texture": "platform1.png",
             "xPos": 560,
             "yPos": 450
         },
         {
             "entitieName": "Enemy",
+            "size": "",
+            "text": "",
             "texture": "enemy.png",
             "xPos": 560,
             "yPos": 400
         },
         {
             "entitieName": "Player",
+            "size": "",
+            "text": "",
             "texture": "WonderBoy.png",
             "xPos": 500,
             "yPos": 450

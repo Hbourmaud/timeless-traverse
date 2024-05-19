@@ -5,6 +5,7 @@
 #include "../Entities/Enemy.h"
 #include "../Entities/Platform.h"
 #include "../Entities/Player.h"
+#include "../Entities/Widget.h"
 using json = nlohmann::json;
 
 SceneManager::SceneManager(sf::RenderWindow* win)
@@ -25,7 +26,7 @@ void SceneManager::SetCamera(float x, float y)
 	camera->setCenter(x, y);
 }
 
-void SceneManager::LoadLevel(std::string levelName, Factory<Entity> factory)
+bool SceneManager::LoadLevel(std::string levelName, Factory<Entity> factory)
 {
 	// afin de charger les niveaux, on utilise un fichier json contenant toute les informations n�cessaires
 	// � la cr�ation des entit�s d'un niveau (joueur, ennemie, plate-forme...) 
@@ -45,6 +46,8 @@ void SceneManager::LoadLevel(std::string levelName, Factory<Entity> factory)
 		float xpos = 0;
 		float ypos = 0;
 		std::string textureName = "";
+		std::string text = "";
+		std::string size = "";
 
 		//r�cup�ration des information de l'entit�
 		if (!level.at("entities")[j].empty())
@@ -65,6 +68,14 @@ void SceneManager::LoadLevel(std::string levelName, Factory<Entity> factory)
 				{
 					textureName = level.at("entities")[j].at("texture");
 				}
+				if (!level.at("entities")[j].at("size").empty())
+				{
+					size = level.at("entities")[j].at("size");
+				}
+				if (!level.at("entities")[j].at("text").empty())
+				{
+					text = level.at("entities")[j].at("text");
+				}
 
 				//cr�ation et param�trage des entit�s du niveaux
 				if (entities == "Platform")
@@ -84,10 +95,33 @@ void SceneManager::LoadLevel(std::string levelName, Factory<Entity> factory)
 					Player::GetInstance().transformComponent->SetPosition(xpos, ypos);
 					Player::GetInstance().spriteComponent->SetSprite(textureName);
 				}
+				else if (entities == "button")
+				{
+					Widget* widget = dynamic_cast<Widget*>(factory.Create(typeid(Widget)));
+					widget->transformComponent->SetPosition(xpos, ypos);
+					widget->setText(text);
+					sf::RectangleShape* rect;
+					widget->setShape(rect);
+					if (text == "PLAY")
+					{
+						//widget->setOnClick(LoadLevel("level1.txt", factory));
+					}
+					if (text == "QUIT")
+					{
+						//widget->setOnClick(quitGame());
+					}
+				}
+				else if (entities == "text")
+				{
+					Widget* widget = dynamic_cast<Widget*>(factory.Create(typeid(Widget)));
+					widget->transformComponent->SetPosition(xpos, ypos);
+					widget->setText(text);
+				}
 			}
 		}
 		j++;
 	}
+	return true;
 }
 
 void SceneManager::UnloadLevel()
