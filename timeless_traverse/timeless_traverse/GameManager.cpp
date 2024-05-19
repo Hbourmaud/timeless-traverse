@@ -4,6 +4,7 @@
 #include "Entities/Enemy.h"
 #include "Entities/Platform.h"
 #include "Entities/Player.h"
+#include "Entities/Widget.h"
 #include "Managers/EntityManager.h"
 #include "Managers/InputManager.h"
 
@@ -37,7 +38,7 @@ void GameManager::GameLoop()
 
 	Factory<Entity> factory;
 
-	SM->LoadLevel("level1.txt", factory);
+	SM->LoadLevel("menu.txt", factory);
 
 	SM->SetUpCollisionBox();
 	
@@ -51,33 +52,27 @@ void GameManager::GameLoop()
 			{
 				window.close();
 			}
-			if (event.key.code == sf::Keyboard::B)
+			if (event.key.code == sf::Keyboard::R)
 			{
 				SM->UnloadLevel();
 				SM->LoadLevel("level1.txt", factory);
 				SM->SetUpCollisionBox();
-				player.physicsComponent->SetVelocity(0);
+				inMenu = false;
 			}
+
 			IM.HandleInput(event);
-
 		}
-		/////////////////////////
-		//Calcul
-
+		
 		SM->SetCamera(player.transformComponent->GetPosition().X,player.transformComponent->GetPosition().Y);
-		window.setView(*SM->GetCamera());
+		if (!inMenu) window.setView(*SM->GetCamera());
 		
 		window.clear();
 		
-		SM->DoPhysics(dt);
-
-		/////////////////////////
-		//Draw
+		SM->DoPhysics(dt, event);
+		
 		window.draw(player.spriteComponent->GetSprite());
-
 		window.display();
-		/////////////////////////
-		//DeltaTime
+		
 		dt = timeBetweenFrame.restart().asSeconds();
 	}
 }

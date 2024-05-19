@@ -1,5 +1,8 @@
 #include "SceneManager.h"
 
+#include <AsyncInfo.h>
+
+#include "InputManager.h"
 #include "../Factory.h"
 #include "../Entities/Character.h"
 #include "../Entities/Enemy.h"
@@ -33,11 +36,16 @@ bool SceneManager::LoadLevel(std::string levelName, Factory<Entity> factory)
 
 	factory.Register<Platform>();
 	factory.Register<Enemy>();
+	factory.Register<Widget>();
+
+	
 	std::string path = std::filesystem::current_path().generic_string() + "/Asset/Level/" + levelName;
 	
 	std::ifstream levelFile(path);
 
 	json level = json::parse(levelFile);
+
+	player->physicsComponent->SetVelocity(0);
 
 	// it�ration dans le fichier JSON
 	int j = 0;
@@ -77,7 +85,7 @@ bool SceneManager::LoadLevel(std::string levelName, Factory<Entity> factory)
 					text = level.at("entities")[j].at("text");
 				}
 
-				//cr�ation et param�trage des entit�s du niveaux
+				//creation et parametrage des entites du niveaux
 				if (entities == "Platform")
 				{
 					Platform* platform = dynamic_cast<Platform*>(factory.Create(typeid(Platform)));
@@ -100,15 +108,14 @@ bool SceneManager::LoadLevel(std::string levelName, Factory<Entity> factory)
 					Widget* widget = dynamic_cast<Widget*>(factory.Create(typeid(Widget)));
 					widget->transformComponent->SetPosition(xpos, ypos);
 					widget->setText(text);
-					sf::RectangleShape* rect;
-					widget->setShape(rect);
+					
 					if (text == "PLAY")
 					{
-						//widget->setOnClick(LoadLevel("level1.txt", factory));
+						widget->setOnClick([this, factory]() {LoadLevel("level1.txt", factory);});
 					}
 					if (text == "QUIT")
 					{
-						//widget->setOnClick(quitGame());
+						widget->setOnClick(	[this]() { if (window->isOpen()) { window->close();} });
 					}
 				}
 				else if (entities == "text")
@@ -131,7 +138,6 @@ void SceneManager::UnloadLevel()
 	std::vector<Entity*> entityArray;
 	entityArray = EntityManager::GetInstance().GetEntityList();
 
-	//for (auto it = entityArray.begin(); it != entityArray.end(); ++it)
 	for(const Entity* i : entityArray)
 	{
 		EntityManager::GetInstance().Clear(entityArray[j]->GetId());
@@ -140,9 +146,9 @@ void SceneManager::UnloadLevel()
 	entityArray.clear();
 }
 
-void SceneManager::DoPhysics(float deltaTime)
+void SceneManager::DoPhysics(float deltaTime, sf::Event event)
 {
-	UpdateEntities(deltaTime);
+	UpdateEntities(deltaTime, event);
 	player->ApplyPhysics(deltaTime);
 }
 
@@ -173,7 +179,7 @@ void SceneManager::SetUpCollisionBox()
 }
 
 
-void SceneManager::UpdateEntities(float deltaTime)
+void SceneManager::UpdateEntities(float deltaTime, sf::Event event )
 {
 	player->spriteComponent->setPosition(player->transformComponent->GetPosition().X, player->transformComponent->GetPosition().Y);
 	player->collisionComponent->SetPosition(player->transformComponent->GetPosition().Y, player->transformComponent->GetPosition().X);
@@ -181,7 +187,7 @@ void SceneManager::UpdateEntities(float deltaTime)
 	
 	std::vector<Entity*> entityList = EntityManager::GetInstance().GetEntityList();
 	std::vector<Platform*> platforms;
-	
+
 	for (auto entity : entityList)
 	{
 		if(typeid(*entity) == typeid(Platform))
@@ -195,6 +201,21 @@ void SceneManager::UpdateEntities(float deltaTime)
 			player->OnCollision(player->collisionComponent->directionalColliding(platform->collisionComponent->GetCollisionBox()));
 
 			window->draw(platform->spriteComponent->GetSprite());
+		}
+
+		if(typeid(*entity) == typeid(Widget))
+		{
+			Widget *widget = dynamic_cast<Widget*>(entity);
+
+			sf::RectangleShape rect = sf::RectangleShape(sf::Vector2f(240.f, 100.f));
+			widget->setShape(&rect);
+
+			if (event.type == sf::Event::MouseButtonReleased && widget->getShape()->getGlobalBounds().contains(InputManager::GetInstance().GetMousePosition(*window)))
+			{
+				widget->onClick();
+			}
+
+			widget->draw(window);
 		}
 
 	}

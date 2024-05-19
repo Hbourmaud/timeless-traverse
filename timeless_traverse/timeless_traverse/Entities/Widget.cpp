@@ -1,4 +1,4 @@
-﻿#include <filesystem>
+#include <filesystem>
 #include <iostream>
 
 #include "Widget.h"
@@ -27,8 +27,9 @@ void Widget::setText(std::string text, sf::Color color, int size) const
     m_text->setFont(font);
 }
 
-void Widget::setShape(sf::Shape* shape)
+void Widget::setShape(sf::RectangleShape* shape)
 {
+    shape->setFillColor(sf::Color::Transparent);
     m_shape = shape;
     m_shape->setPosition(m_text->getPosition());
 }

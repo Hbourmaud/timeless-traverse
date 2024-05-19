@@ -1,37 +1,29 @@
 {
     "entities": [
         {
-            "entitieName": "Player",
+            "entitieName": "text",
             "size": "",
-            "text": "",
-            "texture": "WonderBoy.png",
-            "xPos": 10,
-            "yPos": 5
-        },
-        {
-            "entitieName": "button",
-            "size": "",
-            "text": "PLAY",
+            "text": "Press R to play / restart",
             "texture": "",
-            "xPos": 10,
-            "yPos": 5
+            "xPos": 700,
+            "yPos": 400
         },
         {
             "entitieName": "button",
             "size": "",
             "text": "QUIT",
             "texture": "",
-            "xPos": 10,
-            "yPos": 5
+            "xPos": 900,
+            "yPos": 600
         },
         {
             "entitieName": "text",
             "size": "",
             "text": "TIMELESS TRAVERSE",
             "texture": "",
-            "xPos": 10,
+            "xPos": 700,
             "yPos": 5
         }
     ],
-    "levelName": "level1"
+    "levelName": "menu"
 }

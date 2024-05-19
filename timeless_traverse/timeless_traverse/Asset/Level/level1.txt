@@ -102,7 +102,7 @@
             "text": "",
             "texture": "enemy.png",
             "xPos": 647,
-            "yPos": 290
+            "yPos": 250
         },
         {
             "entitieName": "Player",
