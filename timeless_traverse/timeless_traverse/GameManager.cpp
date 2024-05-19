@@ -6,7 +6,6 @@
 #include "Entities/Player.h"
 #include "Managers/EntityManager.h"
 #include "Managers/InputManager.h"
-//#include "ENtities/Platform.h"
 
 
 GameManager::GameManager() = default;
@@ -26,12 +25,12 @@ void GameManager::GameLoop()
 	sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "Timeless_Traverse");
 	window.setFramerateLimit(60);
 	sf::Event event;
-
-	InputManager& IM = InputManager::GetInstance();
-
+	
 	float dt = 0.f;
-
+	
+	InputManager& IM = InputManager::GetInstance();
 	EntityManager& EM = EntityManager::GetInstance();
+	SceneManager* SM = new SceneManager();
 
 	Player& player = Player::GetInstance();
 	player.spriteComponent->SetSprite("WonderBoy.png");
@@ -44,6 +43,7 @@ void GameManager::GameLoop()
 	
 	Platform* platformA = dynamic_cast<Platform*>(factory.Create(typeid(Platform)));
 	Platform* platformB = dynamic_cast<Platform*>(factory.Create(typeid(Platform)));
+	
 	platformA->spriteComponent->SetSprite("platform1.png");
 	platformA->transformComponent->SetPosition(500.f,500.f);
 	
@@ -54,9 +54,6 @@ void GameManager::GameLoop()
 	enemyA->spriteComponent->SetSprite("enemy.png");
 	enemyA->transformComponent->SetPosition(560.f, 400.f);
 
-	SceneManager* SM = new SceneManager();
-	InputManager& IM = InputManager::GetInstance();
-
 	SM->SetUpCollisionBox();
 	
 	while (window.isOpen())
@@ -65,8 +62,6 @@ void GameManager::GameLoop()
 		//Input
 		while (window.pollEvent(event))
 		{
-			IM.HandleInput(event);
-			
 			if (event.type == sf::Event::Closed)
 			{
 				window.close();
