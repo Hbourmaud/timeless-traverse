@@ -10,6 +10,7 @@ public:
     ~Enemy();
 
     void ApplyPhysics(float deltaTime);
+    void Move(float direction);
 
     PhysicsComponent* physicsComponent;
 };

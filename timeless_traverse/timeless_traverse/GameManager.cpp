@@ -35,15 +35,24 @@ void GameManager::GameLoop()
 
 	Player& player = Player::GetInstance();
 	player.spriteComponent->SetSprite("WonderBoy.png");
-	player.transformComponent->SetPosition(500.f, 400.f);
+	player.transformComponent->SetPosition(500.f, 450.f);
 
 	Factory<Entity> factory;
 
 	factory.Register<Platform>();
+	factory.Register<Enemy>();
 	
 	Platform* platformA = dynamic_cast<Platform*>(factory.Create(typeid(Platform)));
+	Platform* platformB = dynamic_cast<Platform*>(factory.Create(typeid(Platform)));
 	platformA->spriteComponent->SetSprite("platform1.png");
 	platformA->transformComponent->SetPosition(500.f,500.f);
+	
+	platformB->spriteComponent->SetSprite("platform1.png");
+	platformB->transformComponent->SetPosition(560.f,450.f);
+
+	Enemy* enemyA = dynamic_cast<Enemy*>(factory.Create(typeid(Enemy)));
+	enemyA->spriteComponent->SetSprite("enemy.png");
+	enemyA->transformComponent->SetPosition(560.f, 400.f);
 
 	SceneManager* SM = new SceneManager();
 	InputManager& IM = InputManager::GetInstance();
@@ -78,7 +87,9 @@ void GameManager::GameLoop()
 		//Draw
 		window.clear();
 		window.draw(platformA->spriteComponent->GetSprite());
+		window.draw(platformB->spriteComponent->GetSprite());
 		window.draw(player.spriteComponent->GetSprite());
+		window.draw(enemyA->spriteComponent->GetSprite());
 
 		window.display();
 		/////////////////////////

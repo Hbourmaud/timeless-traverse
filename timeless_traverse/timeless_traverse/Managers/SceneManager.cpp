@@ -72,26 +72,40 @@ void SceneManager::UpdateEntities(float deltaTime)
 	player->collisionComponent->SetDirectionalCollisionBox();
 	
 	std::vector<Entity*> entityList = EntityManager::GetInstance().GetEntityList();
+	std::vector<Platform*> platforms;
 	for (auto entity : entityList)
 	{
 		if(typeid(*entity) == typeid(Platform))
 		{
 			Platform *platform = dynamic_cast<Platform*>(entity);
+			platforms.push_back(platform);
+
 			platform->spriteComponent->setPosition(entity->transformComponent->GetPosition().X, entity->transformComponent->GetPosition().Y);
 			platform->collisionComponent->SetPosition(entity->transformComponent->GetPosition().Y, entity->transformComponent->GetPosition().X);
 
 			player->OnCollision(player->collisionComponent->directionalColliding(platform->collisionComponent->GetCollisionBox()));
-			
-			continue;
 		}
 
+	}
+
+	for (auto entity : entityList)
+	{
 		if(typeid(*entity) == typeid(Enemy))
 		{
 			Enemy *enemy = dynamic_cast<Enemy*>(entity);
 			enemy->ApplyPhysics(deltaTime);
 			enemy->spriteComponent->setPosition(entity->transformComponent->GetPosition().X, entity->transformComponent->GetPosition().Y);
 			enemy->collisionComponent->SetPosition(entity->transformComponent->GetPosition().Y, entity->transformComponent->GetPosition().X);
-			continue;
+
+			enemy->Move(25.f);
+			
+			for (Platform* platform : platforms)
+			{
+				if (platform->collisionComponent->isColliding(enemy->collisionComponent->GetCollisionBox()))
+				{
+					enemy->physicsComponent->SetVelocity(new Vector2D::TVector2D(enemy->physicsComponent->GetVelocity().X, 0.f));
+				}
+			}
 		}
 	}
 }
