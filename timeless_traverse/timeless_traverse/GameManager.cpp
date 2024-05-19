@@ -30,7 +30,7 @@ void GameManager::GameLoop()
 	
 	InputManager& IM = InputManager::GetInstance();
 	EntityManager& EM = EntityManager::GetInstance();
-	SceneManager* SM = new SceneManager();
+	SceneManager* SM = new SceneManager(&window);
 
 	Player& player = Player::GetInstance();
 	player.spriteComponent->SetSprite("WonderBoy.png");
@@ -72,6 +72,9 @@ void GameManager::GameLoop()
 		}
 		/////////////////////////
 		//Calcul
+
+		SM->SetCamera(player.transformComponent->GetPosition().X,player.transformComponent->GetPosition().Y);
+		window.setView(*SM->GetCamera());
 
 		SM->DoPhysics(dt);
 
