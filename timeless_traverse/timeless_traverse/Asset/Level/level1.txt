@@ -3,20 +3,26 @@
         {
             "entitieName": "Platform",
             "texture": "platform1.png",
-            "xPos": 10,
-            "yPos": 10
+            "xPos": 500,
+            "yPos": 500
+        },
+        {
+            "entitieName": "Platform",
+            "texture": "platform1.png",
+            "xPos": 560,
+            "yPos": 450
         },
         {
             "entitieName": "Enemy",
             "texture": "enemy.png",
-            "xPos": 100,
-            "yPos": 10
+            "xPos": 560,
+            "yPos": 400
         },
         {
             "entitieName": "Player",
             "texture": "WonderBoy.png",
-            "xPos": 10,
-            "yPos": 5
+            "xPos": 500,
+            "yPos": 450
         }
     ],
     "levelName": "level1"
