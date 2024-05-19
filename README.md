@@ -20,6 +20,7 @@ Afin de lancer le projet il faut:
 - Ouvrir la solution *timeless_traverse.sln* se trouvant dans le dossier ../out/binaries du projet
 - Dans la fenêtre "explorateur de solution", faire un clique droit sur le nom du projet et sélectionner "Définir en tant que projet de démarrage"
 - Configurer votre working directory en indiquant le chemin du projet (pointant le dossier contenant *Asset, Components, Entities ...*)
+    - Example Visual Studio : Project -> Property -> Debugging -> Working Directory
 - Le projet peut maintenant être démarré en cliquant sur le bouton play
 
 ## Architecture du projet
