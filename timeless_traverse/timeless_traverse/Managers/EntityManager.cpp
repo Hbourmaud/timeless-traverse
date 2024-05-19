@@ -24,6 +24,11 @@ Entity* EntityManager::GetEntity(int id)
 	return nullptr;
 }
 
+std::vector<Entity*> EntityManager::GetEntityList()
+{
+	return entityList;
+}
+
 void EntityManager::Clear(int id)
 {
 	Entity* entity = this->GetEntity(id);

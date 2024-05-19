@@ -10,14 +10,11 @@ SpriteComponent::~SpriteComponent() = default;
 void SpriteComponent::SetSprite(std::string textureName)
 {
 	texture = assetManager.GetTexture(textureName);//new sf::Texture;
-	//textureName = std::filesystem::current_path().generic_string() + "/Asset/Texture/" + textureName;
-	//if (!texture->loadFromFile(textureName))
-	//{
-	//	// erreur...
-	//	return;
-	//}
 	texture->setSmooth(true);
 	entitySprite.setTexture(*texture);
 }
 
-
+void SpriteComponent::setPosition(float x, float y)
+{
+	entitySprite.setPosition(x,y);
+}

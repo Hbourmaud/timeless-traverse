@@ -17,6 +17,7 @@ public:
 	Entity* CreateEntity(Entity* entity);
 
 	Entity* GetEntity(int id);
+	std::vector<Entity*> GetEntityList();
 
 	void Clear(int id);
 	void ClearAll();

@@ -1,5 +1,6 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include "../timeless_traverse/Managers/SceneManager.h"
 #include "Entities/Entity.h"
 
 

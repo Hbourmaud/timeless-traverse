@@ -18,6 +18,7 @@ public:
     void MoveHorizontal(float direction);
     void Jump();
     void Action();
+    void OnCollision(CollisionComponent::Direction directionColliding);
 
 private:
     Player();
