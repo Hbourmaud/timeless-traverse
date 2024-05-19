@@ -8,8 +8,10 @@
 
 SceneManager::SceneManager(sf::Window* win)
 {
+	player = &Player::GetInstance();
 	window = win;
-	camera->setCenter(0, 0);
+	camera = new sf::View(sf::FloatRect(0.f,0.f,window->getSize().x,window->getSize().y));
+	camera->setViewport(sf::FloatRect(0.f,0.f,1.f,1.f));
 }
 
 SceneManager::SceneManager()
