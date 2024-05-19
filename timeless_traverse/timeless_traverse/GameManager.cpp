@@ -51,7 +51,13 @@ void GameManager::GameLoop()
 			{
 				window.close();
 			}
-
+			if (event.key.code == sf::Keyboard::B)
+			{
+				SM->UnloadLevel();
+				SM->LoadLevel("level1.txt", factory);
+				SM->SetUpCollisionBox();
+				player.physicsComponent->SetVelocity(0);
+			}
 			IM.HandleInput(event);
 
 		}

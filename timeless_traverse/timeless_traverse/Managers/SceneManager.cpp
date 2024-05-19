@@ -126,8 +126,18 @@ bool SceneManager::LoadLevel(std::string levelName, Factory<Entity> factory)
 
 void SceneManager::UnloadLevel()
 {
-	//EntityManager entity_manager();
-	//entity_manager().ClearAll();
+	int entityListSize = EntityManager::GetInstance().GetEntityList().size();
+	int j = 0;
+	std::vector<Entity*> entityArray;
+	entityArray = EntityManager::GetInstance().GetEntityList();
+
+	//for (auto it = entityArray.begin(); it != entityArray.end(); ++it)
+	for(const Entity* i : entityArray)
+	{
+		EntityManager::GetInstance().Clear(entityArray[j]->GetId());
+		j++;
+	}
+	entityArray.clear();
 }
 
 void SceneManager::DoPhysics(float deltaTime)
